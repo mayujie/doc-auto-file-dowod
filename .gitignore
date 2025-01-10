@@ -1,0 +1,52 @@
+# Ignore all files inside the assets and out folders
+assets/*
+outputs/*
+results_dowod_front/*
+results_dowod_back/*
+
+# But keep the folders themselves
+!assets/
+!outputs/
+
+# Ignore Python bytecode files
+__pycache__/
+*.py[cod]
+*.pyo
+
+# Virtual environments
+venv/
+env/
+*.env
+
+# IDE or editor-specific files
+.vscode/
+.idea/
+
+# Log files
+*.log
+
+# Jupyter Notebook checkpoints
+.ipynb_checkpoints/
+
+# Test output
+nosetests.xml
+coverage.xml
+*.cover
+
+# Dependency directories
+node_modules/
+bower_components/
+
+# Build directories
+build/
+dist/
+*.egg-info/
+
+# OS-specific files
+.DS_Store
+Thumbs.db
+
+# Python-specific files
+*.pyc
+*.pyo
+*.pyd
