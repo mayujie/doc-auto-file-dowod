@@ -1,8 +1,7 @@
 # Ignore all files inside the assets and out folders
 assets/*
 outputs/*
-results_dowod_front/*
-results_dowod_back/*
+results_dowod/*
 
 # But keep the folders themselves
 !assets/

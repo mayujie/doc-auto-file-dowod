@@ -32,3 +32,8 @@ class RegistrationProofInfo:
     section_E: SectionInfo
     section_H: SectionInfo
     section_I: SectionInfo
+
+
+class CONST_DOWOD_TYPE(object):
+    FRONT_FILE_SUFFIX = "front"
+    BACK_FILE_SUFFIX = "back"
