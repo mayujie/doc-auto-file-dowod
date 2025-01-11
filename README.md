@@ -13,7 +13,7 @@ Used for generating PDF documents, such as creating a canvas or setting the page
 Used for reading, writing, and manipulating existing PDF files.
 
 ## Page size information
-
+[Reference link](https://www.sharp.com.hk/tc/offers-news/complete-guide-to-a-paper-sizes-quick-reference-handbook-for-design-print-dimensions)
 ### Page size visualization
 
 ![page_size_visual.png](img/page_size_visual.png)
