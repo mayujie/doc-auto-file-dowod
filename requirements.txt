@@ -5,3 +5,4 @@ Pillow
 pikepdf
 tqdm
 opencv-python
+reportlab
