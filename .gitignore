@@ -2,6 +2,7 @@
 assets/*
 outputs/*
 results_dowod/*
+results_editable/*
 
 # But keep the folders themselves
 !assets/
