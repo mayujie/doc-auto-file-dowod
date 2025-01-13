@@ -2,7 +2,7 @@ import os
 import cv2
 from tqdm import tqdm
 from typing import Union, Tuple
-from dowod_auto_fill.info_instances import CarInfo, RegistrationProofInfo, SectionInfo, CONST_DOWOD_TYPE
+from auto_classes.dowod_info_instances import CarInfo, RegistrationProofInfo, SectionInfo, CONST_DOWOD_TYPE
 
 
 def show_image_with_scale(

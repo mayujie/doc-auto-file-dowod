@@ -6,3 +6,4 @@ pikepdf
 tqdm
 opencv-python
 reportlab
+pyyaml
