@@ -325,17 +325,24 @@ def create_editable_pdf(output_file: str, background_image: str, debug: bool = F
     c.showPage()
     c.save()
 
+    print("Creation finished")
+
 
 if __name__ == "__main__":
     # Specify output file and background image
 
     output_file = "results_editable/dowod_editable_with_bg.pdf"
     bg_file = "assets_dowod/Template_dowod_back.png"  # Replace with your background image file
+    # Create the editable PDF with BG
+    create_editable_pdf(
+        output_file=output_file,
+        background_image=bg_file,
+        debug=False
+    )
 
-    # output_file = "results_editable/dowod_editable_NoBG.pdf"
-    # bg_file = None
-
-    # Create the editable PDF
+    output_file = "results_editable/dowod_editable_NoBG.pdf"
+    bg_file = None
+    # Create the editable PDF no BG
     create_editable_pdf(
         output_file=output_file,
         background_image=bg_file,
