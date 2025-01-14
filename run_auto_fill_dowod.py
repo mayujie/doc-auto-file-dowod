@@ -104,9 +104,9 @@ def make_dowod(
 
 if __name__ == '__main__':
     ROOT_DIR = os.path.dirname(__file__)
-    IMG_FRONT_PATH = os.path.join(ROOT_DIR, "assets/Template_dowod_front.png")
-    IMG_BACK_PATH = os.path.join(ROOT_DIR, "assets/Template_dowod_back_stamp.png")
-    # IMG_BACK_PATH = os.path.join(ROOT_DIR, "assets/Template_dowod_back_stamp.png")
+    IMG_FRONT_PATH = os.path.join(ROOT_DIR, "assets_dowod/Template_dowod_front.png")
+    IMG_BACK_PATH = os.path.join(ROOT_DIR, "assets_dowod/Template_dowod_back_stamp.png")
+    # IMG_BACK_PATH = os.path.join(ROOT_DIR, "assets_dowod/Template_dowod_back_stamp.png")
     DEBUG = False
 
     LIST_CARS = [

@@ -1,11 +1,11 @@
 # Ignore all files inside the assets and out folders
-assets/*
+assets_dowod/*
 outputs/*
 results_dowod/*
 results_editable/*
 
 # But keep the folders themselves
-!assets/
+!assets_dowod/
 !outputs/
 
 # Ignore Python bytecode files

@@ -330,7 +330,7 @@ if __name__ == "__main__":
     # Specify output file and background image
 
     output_file = "results_editable/dowod_editable_with_bg.pdf"
-    bg_file = "assets/Template_dowod_back.png"  # Replace with your background image file
+    bg_file = "assets_dowod/Template_dowod_back.png"  # Replace with your background image file
 
     # output_file = "results_editable/dowod_editable_NoBG.pdf"
     # bg_file = None
