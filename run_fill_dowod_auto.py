@@ -97,7 +97,7 @@ def make_dowod(
         os.makedirs(save_dir, exist_ok=True)
         output_image_path = os.path.join(
             save_dir,
-            f'{car_info.maker}_{car_info.model}_{car_info.vin_number}_{car_info.plate_number}_{file_suffix}.png'
+            f'{car_info.brand}_{car_info.model}_{car_info.vin_number}_{car_info.plate_number}_{file_suffix}.png'
         )
         cv2.imwrite(output_image_path, img)
 
@@ -110,7 +110,7 @@ if __name__ == '__main__':
     DEBUG = False
 
     LIST_CARS = [
-        # Tuple: (maker_name, model_name, VIN, plate_number, start_time, end_time)
+        # Tuple: (brand_name, model_name, VIN, plate_number, start_time, end_time)
         ('LYNK CO', 'CX 11', 'LS6C3E0M6RF830201', 'W3700P96', '2024-06-10', '2024-07-10'),
         ('Deepal', 'S07', 'LS6C3E0M8RF830202', 'W3700P97', '2024-05-13', '2024-07-12'),
         ('BYD', 'VDE', 'LS6C3E0MXRF830203', 'W3700P98', '2024-12-15', '2025-01-14'),
@@ -118,7 +118,7 @@ if __name__ == '__main__':
 
     car_instances = [
         CarInfo(
-            maker=car_info[0],
+            brand=car_info[0],
             model=car_info[1],
             vin_number=car_info[2],
             plate_number=car_info[3],

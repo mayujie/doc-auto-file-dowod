@@ -8,7 +8,7 @@ from dataclasses import dataclass
 
 @dataclass
 class CarInfo:
-    maker: str
+    brand: str
     model: str
     vin_number: str
     start_date: str
@@ -16,7 +16,7 @@ class CarInfo:
     plate_number: Optional[str] = None
 
     def get_section_d(self):
-        section_d = f"D1. {self.maker}\nD2. ...\nD3. {self.model}"
+        section_d = f"D1. {self.brand}\nD2. ...\nD3. {self.model}"
         return section_d
 
 
