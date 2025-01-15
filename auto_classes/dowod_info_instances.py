@@ -29,9 +29,9 @@ class CarInfo:
             "{{CAR_BRAND}}": self.brand,
             "{{CAR_MODEL}}": self.model,
             "{{CAR_VIN}}": self.vin_number,
-            "{{CAR_PLATE_NUMBER}}": self.plate_number,
             "{{DATE_START}}": self.start_date,
             "{{DATE_END}}": self.end_date,
+            "{{CAR_PLATE_NUMBER}}": self.plate_number,
         }
 
 
