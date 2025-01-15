@@ -4,6 +4,9 @@ auto create pdf dowod
 
 ## Package
 
+[Python处理PDF的第三方库对比
+](https://dothinking.github.io/2021-01-02-Python%E5%A4%84%E7%90%86PDF%E7%9A%84%E7%AC%AC%E4%B8%89%E6%96%B9%E5%BA%93%E5%AF%B9%E6%AF%94/)
+
 1. reportlab
 
 Used for generating PDF documents, such as creating a canvas or setting the page size.
@@ -13,7 +16,9 @@ Used for generating PDF documents, such as creating a canvas or setting the page
 Used for reading, writing, and manipulating existing PDF files.
 
 ## Page size information
+
 [Reference link](https://www.sharp.com.hk/tc/offers-news/complete-guide-to-a-paper-sizes-quick-reference-handbook-for-design-print-dimensions)
+
 ### Page size visualization
 
 ![page_size_visual.png](assets_img/page_size_visual.png)
