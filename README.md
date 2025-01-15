@@ -16,8 +16,8 @@ Used for reading, writing, and manipulating existing PDF files.
 [Reference link](https://www.sharp.com.hk/tc/offers-news/complete-guide-to-a-paper-sizes-quick-reference-handbook-for-design-print-dimensions)
 ### Page size visualization
 
-![page_size_visual.png](img/page_size_visual.png)
+![page_size_visual.png](assets_img/page_size_visual.png)
 
 ### Page size table
 
-![page_size_table.png](img/page_size_table.png)
+![page_size_table.png](assets_img/page_size_table.png)
