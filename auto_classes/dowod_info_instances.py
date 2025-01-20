@@ -4,6 +4,7 @@
 #
 from typing import Optional, Dict, Tuple
 from dataclasses import dataclass
+from auto_classes.auto_class import AbstractInfo
 
 
 class CONST_DOWOD_TYPE(object):
@@ -12,7 +13,7 @@ class CONST_DOWOD_TYPE(object):
 
 
 @dataclass
-class CarInfo:
+class CarInfo(AbstractInfo):
     brand: str
     model: str
     vin_number: str

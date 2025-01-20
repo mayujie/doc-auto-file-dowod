@@ -4,10 +4,11 @@
 #
 from typing import Optional, Dict, Tuple
 from dataclasses import dataclass
+from auto_classes.auto_class import AbstractInfo
 
 
 @dataclass
-class CompanyInfo:
+class CompanyInfo(AbstractInfo):
     company_name: str
     company_address: str
     company_address_code_city: str
@@ -25,7 +26,7 @@ class CompanyInfo:
 
 
 @dataclass
-class DriverInfo:
+class DriverInfo(AbstractInfo):
     driver_name: str
     driver_license_number: str
     title: str

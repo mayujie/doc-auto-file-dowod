@@ -3,38 +3,7 @@ from utils.utils_io import load_config
 from auto_classes.authorization_info_class import CompanyInfo, DriverInfo
 from auto_classes.dowod_info_instances import CarInfo
 from docx import Document
-from abc import ABC
-
-
-def fill_template(template_document: Document, data: ABC, make_bold: bool = False):
-    """
-    Fill placeholders in a DOCX template.
-
-    Args:
-        template_document (Document): The template DOCX object.
-        data (DataClassType): Object with a `to_placeholder_mapping` method that returns a dictionary.
-    """
-    data_mapping_dict = data.to_placeholder_mapping()
-
-    # Replace placeholders
-    for paragraph in template_document.paragraphs:
-        for key, value in data_mapping_dict.items():
-            if key in paragraph.text:
-                if not isinstance(value, str):
-                    value = str(value)
-
-                # paragraph.text = paragraph.text.replace(key, value)
-
-                # Find the run containing the placeholder
-                for run in paragraph.runs:
-                    if key in run.text:
-                        # Replace the placeholder
-                        run.text = run.text.replace(key, value)
-                        # Apply bold if needed
-                        if make_bold:
-                            run.bold = True
-                        break  # Exit after replacing the key
-    return template_document
+from utils.utils_authorize import fill_template
 
 
 def main(
@@ -57,12 +26,18 @@ def main(
     for idx, company in enumerate(company_instances):
         # Load the document
         res_doc = Document(doc_template_file)
-        res_doc = fill_template(template_document=res_doc, data=driver_instance)
+        res_doc = fill_template(
+            template_document=res_doc,
+            data=driver_instance
+        )
         res_doc = fill_template(
             template_document=res_doc, data=company,
             make_bold=True,
         )
-        res_doc = fill_template(template_document=res_doc, data=car_instance)
+        res_doc = fill_template(
+            template_document=res_doc,
+            data=car_instance
+        )
 
         save_dir = "results_author"
         if not os.path.exists(save_dir):
