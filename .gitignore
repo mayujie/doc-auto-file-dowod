@@ -2,7 +2,7 @@
 assets_doc/*
 assets_dowod/*
 assets_stamps/*
-#auto_info_config/*
+auto_info_config/*
 outputs/*
 results_dowod/*
 results_editable/*
