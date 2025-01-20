@@ -2,6 +2,7 @@
 assets_doc/*
 assets_dowod/*
 assets_stamps/*
+auto_info_config/*
 outputs/*
 results_dowod/*
 results_editable/*
@@ -10,6 +11,7 @@ results_editable/*
 !assets_doc/
 !assets_dowod/
 !assets_stamps/
+!auto_info_config/
 !outputs/
 
 # Ignore Python bytecode files
