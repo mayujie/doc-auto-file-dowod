@@ -1,0 +1,41 @@
+amuatu: # https://aleo.com/pl/firma/amuatu-spolka-z-ograniczona-odpowiedzialnoscia
+  company_name: AMUATU Sp. z o.o.
+  company_address: UL. CHMIELNA 2 / 31
+  company_address_code_city: 00-020 WARSZAWA
+  company_nip_number: 5252964556
+  company_regon_number: 525878532
+
+toyar: # https://aleo.com/pl/firma/toyar-spolka-z-ograniczona-odpowiedzialnoscia-kajetany
+  company_name: Toyar Sp. z o.o.
+  company_address: UL. KLONOWA 48
+  company_address_code_city: 05-830 KAJETANY
+  company_nip_number: 5342660216
+  company_regon_number: 524305024
+
+frano: # https://aleo.com/pl/firma/frano-sp-z-oo-warszawa
+  company_name: FRANO Sp. z o.o.
+  company_address: UL. KIELECKA 41A / 8
+  company_address_code_city: 02-530 WARSZAWA
+  company_nip_number: 5213899174
+  company_regon_number: 386303336
+
+lsy: # https://aleo.com/pl/firma/lsy-sp-z-oo-poznan
+  company_name: LSY Sp. z o.o.
+  company_address: UL. ALEJA KRAKOWSKA 87 / M4
+  company_address_code_city: 05-552 JABŁONOWO
+  company_nip_number: 7831805721
+  company_regon_number: 384285195
+
+commercia: # https://aleo.com/pl/firma/commercia-spolka-z-ograniczona-odpowiedzialnoscia
+  company_name: COMMERCIA Sp. z o.o.
+  company_address: UL. DŁUGA 29
+  company_address_code_city: 00-238 WARSZAWA
+  company_nip_number: 5253015313
+  company_regon_number: 529514608
+
+peony: # https://aleo.com/pl/firma/peonyeur-spolka-z-ograniczona-odpowiedzialnoscia
+  company_name: PEONY.EUR Sp. z o.o.
+  company_address: UL. ŻURAWIA 22 / 704
+  company_address_code_city: 00-515 WARSZAWA
+  company_nip_number: 7011210526
+  company_regon_number: 528955865

@@ -6,45 +6,7 @@ from docx import Document
 from abc import ABC
 
 
-def fill_template_bold(template_document: Document, data: ABC, bold_keys=None):
-    """
-    Fill placeholders in a DOCX template and optionally make specific replacements bold.
-
-    Args:
-        template_document (Document): The template DOCX object.
-        data (ABC): Object with a `to_placeholder_mapping` method that returns a dictionary.
-        bold_keys (list[str], optional): List of keys whose values should be bold in the final document.
-    """
-    data_mapping_dict = data.to_placeholder_mapping()
-    bold_keys = bold_keys or []  # Default to an empty list if not provided
-
-    # Replace placeholders
-    for paragraph in template_document.paragraphs:
-        for key, value in data_mapping_dict.items():
-            if key in paragraph.text:
-                # Replace the placeholder while retaining formatting
-                inline_runs = paragraph.runs
-                for run in inline_runs:
-                    if key in run.text:
-                        # Split text around the key
-                        parts = run.text.split(key)
-                        run.text = parts[0]  # Text before the key
-
-                        if not isinstance(value, str):
-                            value = str(value)
-                        # Add a new run for the replacement value
-                        new_run = paragraph.add_run(value)
-                        if key in bold_keys:
-                            new_run.bold = True  # Make it bold
-
-                        # Add another run for the text after the key
-                        if len(parts) > 1:
-                            paragraph.add_run(parts[1])
-                        break
-    return template_document
-
-
-def fill_template(template_document: Document, data: ABC):
+def fill_template(template_document: Document, data: ABC, make_bold: bool = False):
     """
     Fill placeholders in a DOCX template.
 
@@ -60,8 +22,18 @@ def fill_template(template_document: Document, data: ABC):
             if key in paragraph.text:
                 if not isinstance(value, str):
                     value = str(value)
-                paragraph.text = paragraph.text.replace(key, value)
 
+                # paragraph.text = paragraph.text.replace(key, value)
+
+                # Find the run containing the placeholder
+                for run in paragraph.runs:
+                    if key in run.text:
+                        # Replace the placeholder
+                        run.text = run.text.replace(key, value)
+                        # Apply bold if needed
+                        if make_bold:
+                            run.bold = True
+                        break  # Exit after replacing the key
     return template_document
 
 
@@ -88,7 +60,7 @@ def main(
         res_doc = fill_template(template_document=res_doc, data=driver_instance)
         res_doc = fill_template(
             template_document=res_doc, data=company,
-            # bold_keys=company.to_placeholder_mapping().keys()
+            make_bold=True,
         )
         res_doc = fill_template(template_document=res_doc, data=car_instance)
 

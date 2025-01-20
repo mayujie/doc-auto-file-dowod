@@ -8,3 +8,4 @@ opencv-python
 reportlab
 pyyaml
 python-docx
+pandas
