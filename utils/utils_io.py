@@ -25,12 +25,12 @@ def save_docx(docx_obj: Document, docx_save_file: str):
         raise ValueError(f"Invalid file format for saving the DOCX document. {docx_save_file} Use '.docx'.")
 
 
-def remove_files_from_dir(directory: str, extension: str = ".docx"):
+def remove_files_from_dir(directory: str, extension: str = ".docx", keywords: str = ".docx"):
     """
     Removes all .docx files from the specified directory.
     """
     for file_name in os.listdir(directory):
-        if file_name.endswith(extension):
+        if file_name.endswith(extension) and keywords in file_name:
             file_path = os.path.join(directory, file_name)
             try:
                 os.remove(file_path)  # Remove the file
