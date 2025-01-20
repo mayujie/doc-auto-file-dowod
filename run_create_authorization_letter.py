@@ -1,9 +1,12 @@
 import os
-from utils.utils_io import load_config
+from tqdm import tqdm
+
+from utils.utils_io import load_config, check_create_save_directory, save_docx
+from utils.utils_authorize import fill_template
+from utils.utils import convert_docx_to_pdf_and_cleanup
 from auto_classes.authorization_info_class import CompanyInfo, DriverInfo
 from auto_classes.dowod_info_instances import CarInfo
 from docx import Document
-from utils.utils_authorize import fill_template
 
 
 def main(
@@ -23,7 +26,7 @@ def main(
         CompanyInfo(*selected_company_info[comp_name].values()) for comp_name in selected_company_info.keys()
     ]
 
-    for idx, company in enumerate(company_instances):
+    for idx, company in enumerate(tqdm(company_instances)):
         # Load the document
         res_doc = Document(doc_template_file)
         res_doc = fill_template(
@@ -40,10 +43,20 @@ def main(
         )
 
         save_dir = "results_author"
-        if not os.path.exists(save_dir):
-            os.makedirs(save_dir, exist_ok=True)
+        save_docx_file = f"{save_dir}/output_{company.company_name}.docx"
+        save_pdf_file_final = f"{save_dir}/doc_{company.company_name}.pdf"
+
+        check_create_save_directory(save_directory=save_dir)
         # Save the modified document
-        res_doc.save(f"{save_dir}/output_{company.company_name}.docx")
+        save_docx(
+            docx_obj=res_doc,
+            docx_save_file=save_docx_file,
+        )
+        # convert docx file to pdf file
+        convert_docx_to_pdf_and_cleanup(
+            docx_file=f"{save_dir}/output_{company.company_name}.docx",
+            output_dir=save_dir,
+        )
 
 
 if __name__ == '__main__':

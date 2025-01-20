@@ -15,6 +15,13 @@ Used for generating PDF documents, such as creating a canvas or setting the page
 
 Used for reading, writing, and manipulating existing PDF files.
 
+3. convert docx to pdf
+    - `libreoffice --convert-to pdf`: LibreOffice converts the `.docx` file to `.pdf`.
+    - `--headless`: Ensures that LibreOffice runs without opening a graphical interface.
+    - `Output Directory`: Specify the folder where the PDF will be saved.
+
+Requires to install using `sudo apt install libreoffice`
+
 ## Page size information
 
 [Reference link](https://www.sharp.com.hk/tc/offers-news/complete-guide-to-a-paper-sizes-quick-reference-handbook-for-design-print-dimensions)

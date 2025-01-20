@@ -1,4 +1,6 @@
 import cv2
+import os
+import subprocess
 from typing import Union, Tuple
 
 
@@ -24,3 +26,35 @@ def show_image_with_scale(
     # Wait for a key press and then close the window
     cv2.waitKey(0)
     cv2.destroyAllWindows()
+
+
+def convert_docx_to_pdf_and_cleanup(docx_file, output_dir):
+    """
+    Converts a .docx file to a .pdf using LibreOffice, then removes the .docx file.
+
+    Parameters:
+    - docx_file: Path to the .docx file.
+    - output_dir: Directory to save the output PDF.
+    """
+    if not docx_file.endswith(".docx"):
+        raise ValueError(f"Invalid file format. {docx_file} Use '.docx'.")
+
+    # Run LibreOffice conversion to convert .docx to .pdf
+    subprocess.run(
+        [
+            "libreoffice",
+            "--headless",  # Run in headless mode (no GUI)
+            "--convert-to", "pdf",  # Specify output format
+            docx_file,
+            "--outdir", output_dir,  # Output directory
+        ],
+        check=True
+    )
+    print(f"PDF saved in {output_dir}")
+
+    # Remove the .docx file
+    try:
+        os.remove(docx_file)
+        print(f"Removed: {docx_file}")
+    except OSError as e:
+        print(f"Error deleting file {docx_file}: {e}")
