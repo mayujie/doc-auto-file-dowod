@@ -2,6 +2,7 @@ import os.path
 
 from docx import Document
 from reportlab.pdfgen import canvas
+from reportlab.lib.pagesizes import A4
 from PyPDF2 import PdfReader, PdfWriter, PdfReader
 from auto_classes.auto_class import AbstractInfo
 
@@ -46,12 +47,25 @@ def create_watermark_pdf(watermark_file: str, watermark_text: str, rotation_angl
         print(f"{watermark_file} already exists, skipping.")
         return None
 
-    c = canvas.Canvas(watermark_file, pagesize=(595.27, 841.89))  # A4 size (points)
+    a4_width, a4_height = A4  # A4 size in points
+    target_width = 4 / 5 * a4_width  # Two-thirds of the A4 width
+
+    c = canvas.Canvas(watermark_file, pagesize=A4)  # A4 size (points)
     c.setFont("Helvetica", font_size)
+
+    # Adjust font size to meet width requirement
+    watermark_width = c.stringWidth(watermark_text, "Helvetica", font_size)
+    while watermark_width < target_width:
+        font_size += 5  # Increment font size
+        c.setFont("Helvetica", font_size)
+        watermark_width = c.stringWidth(watermark_text, "Helvetica", font_size)
+
+    print(f"Final font size: {font_size}")
+    print(f"Watermark dimensions: Width = {watermark_width}, Height = {font_size}")
 
     # c.setFillGray(0.9, 0.9)  # Set transparency (gray scale)
     # Set transparency using a blend of colors
-    c.setFillAlpha(0.2)  # Set transparency level (0 = fully transparent, 1 = fully opaque)
+    c.setFillAlpha(0.15)  # Set transparency level (0 = fully transparent, 1 = fully opaque)
 
     # Positions for the watermarks (Y-coordinates for upper, center, and bottom)
     positions = [480, 300, 150]  # Adjust values as needed for your layout
