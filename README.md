@@ -1,6 +1,11 @@
 # doc-auto-dowod
 
 auto create pdf dowod
+## Structures
+1. [merge_water_to_pdf.py](merge_water_to_pdf.py)
+2. [run_create_authorization_letter.py](run_create_authorization_letter.py)
+3. [run_create_editable_pdf.py](run_create_editable_pdf.py)
+4. [run_fill_dowod_auto.py](run_fill_dowod_auto.py)
 
 ## Package
 

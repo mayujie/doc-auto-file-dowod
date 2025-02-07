@@ -1,7 +1,7 @@
 from utils.utils_authorize import create_watermark_pdf, add_watermark_to_pdf
 
 # Usage
-input_pdf = "assets_doc/W2200P31 Baigale Authorization Letter.pdf"
+input_pdf = "assets_doc/Template_Authorization_Letter.pdf"
 # input_pdf = "results_author/output_AMUATU Sp. z o.o..pdf"
 
 output_pdf = "results_author/output_with_watermark.pdf"
