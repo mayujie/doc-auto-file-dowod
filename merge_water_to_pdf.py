@@ -2,10 +2,9 @@ from utils.utils_authorize import create_watermark_pdf, add_watermark_to_pdf
 
 # Usage
 input_pdf = "assets_doc/Template_Authorization_Letter.pdf"
-# input_pdf = "results_author/output_AMUATU Sp. z o.o..pdf"
+# input_pdf = "results_author/doc_AMUATU Sp. z o.o..pdf"
 
 output_pdf = "results_author/output_with_watermark.pdf"
-watermark_file = "results_author/watermark.pdf"
 
 # watermark_text = "AMUATU Sp. z o.o."
 # watermark_text = "Toyar Sp. z o.o."
@@ -14,6 +13,7 @@ watermark_file = "results_author/watermark.pdf"
 watermark_text = "COMMERCIA Sp. z o.o."
 # watermark_text = "PEONY.EUR Sp. z o.o."
 
+watermark_file = f"results_author/watermark_{watermark_text}.pdf"
 
 # Create the watermark and add it to the input PDF
 create_watermark_pdf(
@@ -25,4 +25,5 @@ add_watermark_to_pdf(
     input_pdf=input_pdf,
     output_pdf=output_pdf,
     watermark_file=watermark_file,
+    delete_input_pdf=False,  # Keep the input PDF for further processing if needed
 )

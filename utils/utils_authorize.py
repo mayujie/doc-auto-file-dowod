@@ -1,5 +1,5 @@
 import os.path
-
+from typing import Optional
 from docx import Document
 from reportlab.pdfgen import canvas
 from reportlab.lib.pagesizes import A4
@@ -81,7 +81,7 @@ def create_watermark_pdf(watermark_file: str, watermark_text: str, rotation_angl
     c.save()
 
 
-def add_watermark_to_pdf(input_pdf: str, output_pdf: str, watermark_file: str):
+def add_watermark_to_pdf(input_pdf: str, output_pdf: str, watermark_file: str, delete_input_pdf: Optional[bool]=True):
     """
     Adds the watermark to each page of the input PDF and saves the output PDF.
     """
@@ -101,8 +101,9 @@ def add_watermark_to_pdf(input_pdf: str, output_pdf: str, watermark_file: str):
     with open(output_pdf, "wb") as output_file:
         pdf_writer.write(output_file)
 
-    try:
-        os.remove(input_pdf)
-        print(f"Removed: {input_pdf}")
-    except OSError as e:
-        print(f"Error deleting file {input_pdf}: {e}")
+    if delete_input_pdf:
+        try:
+            os.remove(input_pdf)
+            print(f"Removed: {input_pdf}")
+        except OSError as e:
+            print(f"Error deleting file {input_pdf}: {e}")
