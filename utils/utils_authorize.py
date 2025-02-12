@@ -69,6 +69,7 @@ def create_watermark_pdf(watermark_file: str, watermark_text: str, rotation_angl
 
     # Positions for the watermarks (Y-coordinates for upper, center, and bottom)
     positions = [480, 300, 150]  # Adjust values as needed for your layout
+    # positions = [350, 150]  # Adjust values as needed for your layout
 
     for y in positions:
         c.saveState()  # Save the canvas state before transformations
