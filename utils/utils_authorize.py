@@ -39,7 +39,13 @@ def fill_template(template_document: Document, data: AbstractInfo, make_bold: bo
     return template_document
 
 
-def create_watermark_pdf(watermark_file: str, watermark_text: str, rotation_angle=135, font_size=60):
+def create_watermark_pdf(
+        watermark_file: str,
+        watermark_text: str,
+        rotation_angle: int = 135,
+        font_size: int = 60,
+        num_watermarks: int = 3,
+):
     """
     Creates a watermark PDF with the specified text and rotation angle.
     """
@@ -65,11 +71,14 @@ def create_watermark_pdf(watermark_file: str, watermark_text: str, rotation_angl
 
     # c.setFillGray(0.9, 0.9)  # Set transparency (gray scale)
     # Set transparency using a blend of colors
-    c.setFillAlpha(0.15)  # Set transparency level (0 = fully transparent, 1 = fully opaque)
-
-    # Positions for the watermarks (Y-coordinates for upper, center, and bottom)
-    positions = [480, 300, 150]  # Adjust values as needed for your layout
-    # positions = [350, 150]  # Adjust values as needed for your layout
+    if num_watermarks == 2:
+        c.setFillAlpha(0.1)  # Set transparency level (0 = fully transparent, 1 = fully opaque)
+        # Positions for the watermarks (Y-coordinates for upper, center, and bottom)
+        positions = [350, 150]  # Adjust values as needed for your layout
+    if num_watermarks == 3:
+        c.setFillAlpha(0.15)  # Set transparency level (0 = fully transparent, 1 = fully opaque)
+        # Positions for the watermarks (Y-coordinates for upper, center, and bottom)
+        positions = [480, 300, 150]  # Adjust values as needed for your layout
 
     for y in positions:
         c.saveState()  # Save the canvas state before transformations
@@ -81,7 +90,7 @@ def create_watermark_pdf(watermark_file: str, watermark_text: str, rotation_angl
     c.save()
 
 
-def add_watermark_to_pdf(input_pdf: str, output_pdf: str, watermark_file: str, delete_input_pdf: Optional[bool]=True):
+def add_watermark_to_pdf(input_pdf: str, output_pdf: str, watermark_file: str, delete_input_pdf: Optional[bool] = True):
     """
     Adds the watermark to each page of the input PDF and saves the output PDF.
     """
