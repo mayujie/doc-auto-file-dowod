@@ -46,7 +46,7 @@ def main(
         temp_save_docx_file = f"{save_dir}/output_{company.company_name}.docx"
         temp_save_pdf_file = temp_save_docx_file.replace('.docx', '.pdf')
 
-        save_pdf_file_final = f"{save_dir}/doc_{company.company_name}.pdf"
+        save_pdf_file_final = f"{save_dir}/doc_{company.company_name}_{driver_instance.driver_name}.pdf"
         watermark_pdf = f"{save_dir}/watermark_{company.company_name}.pdf"
 
         check_create_save_directory(save_directory=save_dir)
@@ -74,12 +74,12 @@ def main(
 
 if __name__ == '__main__':
     companies = [
-        "amuatu",
-        "toyar",
-        "frano",
-        "lsy",
+        # "amuatu",
+        # "toyar",
+        # "frano",
+        # "lsy",
         "commercia",
-        "peony",
+        # "peony",
     ]
     doc_template_file = "assets_doc/Template_Authorization_Letter.docx"
     main(
