@@ -2,7 +2,7 @@ import os
 from tqdm import tqdm
 
 from utils.utils_io import load_config, check_create_save_directory, save_docx, remove_files_from_dir
-from utils.utils_authorize import fill_template, create_watermark_pdf, add_watermark_to_pdf
+from utils.utils_authorize import fill_template, create_watermark_pdf, add_watermark_to_pdf, insert_signatures
 from utils.utils import convert_docx_to_pdf_and_cleanup
 from auto_classes.authorization_info_class import CompanyInfo, DriverInfo
 from auto_classes.dowod_info_instances import CarInfo
@@ -11,6 +11,7 @@ from docx import Document
 
 def main(
         company_list: list,
+        stamp_list: list,
         config_comapny_file: str,
         config_car_driver_file: str,
         doc_template_file: str,
@@ -28,6 +29,10 @@ def main(
 
     save_dir = "results_author"
     for idx, company in enumerate(tqdm(company_instances)):
+        selected_stamp_file = [
+            st for st in stamp_list if company.company_name.replace(' Sp. z o.o.', '').lower() in st
+        ][0]
+
         # Load the document
         res_doc = Document(doc_template_file)
         res_doc = fill_template(
@@ -63,12 +68,23 @@ def main(
         # create watermark pdf
         create_watermark_pdf(watermark_file=watermark_pdf, watermark_text=company.company_name, rotation_angle=45)
         # Add watermark to doc pdf
-        add_watermark_to_pdf(
+        output_pdf_path = add_watermark_to_pdf(
             input_pdf=temp_save_pdf_file,
             output_pdf=save_pdf_file_final,
             watermark_file=watermark_pdf,
         )
-
+        width, height = 130, 130
+        final_output_path = insert_signatures(
+            pdf_path=output_pdf_path,
+            image_path=selected_stamp_file,
+            positions=[
+                (350, 520),
+            ],
+            width=width,
+            height=height,
+            output_path=None,
+        )
+        print(f"Final Generated: {final_output_path}")
     remove_files_from_dir(directory=save_dir, extension='.pdf', keywords='watermark_')
 
 
@@ -82,8 +98,11 @@ if __name__ == '__main__':
         # "peony",
     ]
     doc_template_file = "assets_doc/Template_Authorization_Letter.docx"
+
+    stamps_dir = sorted([os.path.join("assets_stamps", a) for a in os.listdir("assets_stamps")])
     main(
         company_list=companies,
+        stamp_list=stamps_dir,
         config_comapny_file="auto_info_config/config_company.yml",
         config_car_driver_file="auto_info_config/config_car_driver.yml",
         doc_template_file=doc_template_file,

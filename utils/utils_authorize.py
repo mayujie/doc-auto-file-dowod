@@ -1,4 +1,5 @@
-import os.path
+import os
+import fitz  # PyMuPDF
 from typing import Optional
 from docx import Document
 from reportlab.pdfgen import canvas
@@ -116,3 +117,57 @@ def add_watermark_to_pdf(input_pdf: str, output_pdf: str, watermark_file: str, d
             print(f"Removed: {input_pdf}")
         except OSError as e:
             print(f"Error deleting file {input_pdf}: {e}")
+
+    return output_pdf
+
+
+def insert_signatures(
+        pdf_path: str,
+        image_path: str,
+        positions: list,
+        output_path: Optional[str] = None,
+        width=None,
+        height=None,
+) -> str:
+    """
+    Insert a transparent PNG signature into a PDF at multiple positions on a specified page.
+
+    Args:
+        pdf_path (str): Path to the input PDF.
+        output_path (str): Path to the output PDF.
+        image_path (str): Path to the PNG image file.
+        positions (list of tuples): List of (x, y) coordinates for the top-left corner of the image.
+        width (float, optional): Desired width of the image. If None, the original image width is used.
+        height (float, optional): Desired height of the image. If None, the original image height is used.
+
+    Returns:
+        str
+    """
+    # Open the PDF
+    pdf_document = fitz.open(pdf_path)
+    target_page = pdf_document[0]
+
+    # Insert the image at each position
+    for x, y in positions:
+        if width and height:
+            rect = fitz.Rect(x, y, x + width, y + height)
+        else:
+            rect = None  # Use the image's original dimensions
+        target_page.insert_image(rect, filename=image_path)
+
+    # Save the updated PDF
+    if output_path is None:
+        output_path = os.path.splitext(pdf_path)[0] + "_signed" + os.path.splitext(pdf_path)[1]
+    if not os.path.exists(output_path):
+        os.makedirs(os.path.dirname(output_path), exist_ok=True)
+
+    pdf_document.save(output_path)
+    pdf_document.close()
+
+    try:
+        os.remove(pdf_path)  # Remove the file
+        print(f"Removed: {pdf_path}")
+    except OSError as e:
+        print(f"Error deleting file {pdf_path}: {e}")
+
+    return output_path
