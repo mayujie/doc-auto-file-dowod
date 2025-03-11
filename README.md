@@ -31,6 +31,26 @@ libreoffice --headless --convert-to pdf Template_Authorization_Letter.docx
 
 Requires to install using `sudo apt install libreoffice`
 
+4. convert png to pdf
+```
+convert output.png output.pdf
+```
+
+5. convert pdf to png
+```
+pdftoppm -png -gray input.pdf output
+
+pdftoppm -png -r 900  output_with_watermark.pdf output
+
+convert scrap.pdf scrap.png
+
+```
+
+6. merge pngs or pdfs to single
+```
+convert -append page-*.png output.png
+```
+
 ## Page size information
 
 [Reference link](https://www.sharp.com.hk/tc/offers-news/complete-guide-to-a-paper-sizes-quick-reference-handbook-for-design-print-dimensions)
